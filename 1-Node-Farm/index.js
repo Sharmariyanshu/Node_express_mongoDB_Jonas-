@@ -45,7 +45,8 @@ const tempProduct = fs.readFileSync(`${__dirname}/templates/template-product.htm
 const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8');
 const dataObj = JSON.parse(data);
 
-const slugs = dataObj.map(el => slugify(el.productName), {lowercase:true})
+const slugs = dataObj.map(el => slugify(el.productName, { lower: true }));
+
 console.log(slugs);
     
 const server = http.createServer((req,res) => {
@@ -59,7 +60,7 @@ const server = http.createServer((req,res) => {
         res.writeHead(200,{'Content-type' : 'text/html'});
 
         const cardHtml = dataObj.map(el => replaceTemplate(tempCard,el)).join('');
-       const output = tempOverview.replace('{%PRODUCT_CARDS%', cardHtml);
+       const output = tempOverview.replace('{%PRODUCT_CARD%}', cardHtml);
         res.end(output);
     }
 
