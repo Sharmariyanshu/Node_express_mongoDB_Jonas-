@@ -42,7 +42,7 @@ const getDogPic = async () =>{
 };
 
 (async () => {
-    try
+    try {
         console.log('1: Will get dog pics!!')
         const x =await getDogPic();
         console.log(x);
