@@ -38,7 +38,7 @@ const getDogPic = async () =>{
     console.log(err);
     throw err;
 }
-    return '2: READY 🐶'
+    return '2: READY 🐶';
 };
 
 (async () => {
